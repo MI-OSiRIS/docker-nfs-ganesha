@@ -11,6 +11,10 @@ set -e
 : ${GANESHA_NFS_PROTOCOLS:="4"}
 : ${GANESHA_TRANSPORTS:="TCP"}
 : ${GANESHA_SECTYPE:="krb5"}
+: ${GANESHA_SQUASH:="Root_Squash"}
+: ${GANESHA_ANON_UID:="-2"}
+: ${GANESHA_ANON_GID:="-2"}
+
 : ${GANESHA_KRB5_PRINCIPAL="nfs"}
 
 # config requirements for Ceph
@@ -57,7 +61,9 @@ EXPORT
 
         # Access control options
         Access_Type = NONE;
-        Squash = Root_Squash;
+        Squash = ${GANESHA_SQUASH};
+        Anonymous_Uid = ${GANESHA_ANON_UID};
+        Anonymous_Gid = ${GANESHA_ANON_GID};
 
         # NFS protocol options
         Transports = "${GANESHA_TRANSPORTS}";
