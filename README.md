@@ -7,23 +7,23 @@ Depending on how your ldap server certificate is signed you may need to modify t
 
 ## KRB5 config
 
-You must create principals in your Kerberos domain for both the server and the client mounting the NFS filesystem:
+You must create principals in your Kerberos domain for both the server and the client mounting the NFS filesystem.  The example below is for Linux-based systems:
 
 ```
-kadmin:  addprinc -randkey host/server.example.org
 kadmin:  addprinc -randkey nfs/server.example.org
 kadmin:  addprinc -randkey nfs/client.example.org
-kadmin:  addprinc -randkey host/client.example.org
 ```
 
 You must then put principals in keytabs for the client and server (different keytab for each).  Ensure this file is kept secure and private, only readable by root on each system.
 
 ```
-kadmin:  ktadd -k server.keytab host/server.example.org
 kadmin:  ktadd -k server.keytab nfs/server.example.org
+kadmin:  ktadd -k client.keytab nfs/client.example.org
 ```
 
-Copy server.keytab to /etc/krb5.keytab on server.example.org.  Repeat this process creating a different keytab for client.example.org.  
+Copy server.keytab to /etc/krb5.keytab on server.example.org.  Copy client.keytab to /etc/krb5.keytab on the client system.  Repeat client keytab setup for other client systems, assigning different principals for each based on hostname.  
+
+This setup assumes your clients and server are otherwise configured for Kerberos with correct information in /etc/krb5.conf.  Your client users should be able to obtain Kerberos credentials with 'kinit' or at login.  
 
 ## LDAP Config
 
