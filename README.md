@@ -80,7 +80,8 @@ Environment variables are shown below with defaults.
 
 ### Ganesha Environment Variables
 
-* `GANESHA_LOGFILE`: "/dev/stdout"
+* `GANESHA_LOGFILE`: "/dev/stdout
+* `GANESHA_LOGLEVEL`: "INFO"   (DEBUG, INFO, WARN, ERROR)
 * `GANESHA_CONFIGFILE`: "/etc/ganesha/ganesha.conf"
 * `GANESHA_OPTIONS`: "-N NIV_EVENT" 
 * `GANESHA_EXPORT_ID`: "2046"

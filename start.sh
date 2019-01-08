@@ -3,6 +3,7 @@ set -e
 
 # Options for starting Ganesha
 : ${GANESHA_LOGFILE:="/dev/stdout"}
+: ${GANESHA_LOGLEVEL:="INFO"}
 : ${GANESHA_CONFIGFILE:="/etc/ganesha/ganesha.conf"}
 : ${GANESHA_OPTIONS:="-N NIV_EVENT"} # NIV_DEBUG
 : ${GANESHA_EXPORT_ID:="2046"}
@@ -86,7 +87,7 @@ EXPORT
 }
 
 LOG {
-        Default_Log_Level = WARN;
+        Default_Log_Level = ${GANESHA_LOGLEVEL};
         Components {
                 # ALL = DEBUG;
                 # SESSIONS = INFO;
