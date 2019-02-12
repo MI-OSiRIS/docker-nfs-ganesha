@@ -89,7 +89,8 @@ EXPORT
 LOG {
         Default_Log_Level = ${GANESHA_LOGLEVEL};
         Components {
-                # ALL = DEBUG;
+                Default_Log_Level = ${GANESHA_LOGLEVEL};
+                # ALL = ${GANESHA_LOGLEVEL};
                 # SESSIONS = INFO;
          }
 }
