@@ -90,7 +90,7 @@ LOG {
         Default_Log_Level = ${GANESHA_LOGLEVEL};
         Components {
                 Default_Log_Level = ${GANESHA_LOGLEVEL};
-                # ALL = ${GANESHA_LOGLEVEL};
+                ALL = ${GANESHA_LOGLEVEL};
                 # SESSIONS = INFO;
          }
 }
